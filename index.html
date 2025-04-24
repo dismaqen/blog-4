@@ -1,39 +1,70 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dua Iklan Banner</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: #f9f9f9;
-      margin: 0;
-      gap: 30px;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    .ads {
+      margin: 20px 0;
+    }
+    img {
+      width: 160px;
+      height: auto;
+      margin: 10px;
+      cursor: pointer;
     }
   </style>
+
+  <!-- Adsterra Iklan Banner (Iframe) -->
+  <script type="text/javascript">
+    atOptions = {
+      'key': '97d43951db9261809a799666a3048595',
+      'format': 'iframe',
+      'height': 90,
+      'width': 728,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/97d43951db9261809a799666a3048595/invoke.js"></script>
+
+  <!-- Banner CPM -->
+  <script async="async" data-cfasync="false" src="//pl26467811.profitableratecpm.com/728221d3f35d045caac4d7c28d7093b0/invoke.js"></script>
 </head>
 <body>
 
-  <!-- Iklan Adsterra -->
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '97d43951db9261809a799666a3048595',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
+  <h2>Iklan Banner Otomatis</h2>
+
+  <!-- Container CPM Iklan -->
+  <div id="container-728221d3f35d045caac4d7c28d7093b0" class="ads"></div>
+
+  <!-- Simulasi Gambar Iklan -->
+  <div class="ads">
+    <a href="https://example.com/ad1" target="_blank"><img src="https://via.placeholder.com/160x90?text=Ad1" alt="Ad1" /></a>
+    <a href="https://example.com/ad2" target="_blank"><img src="https://via.placeholder.com/160x90?text=Ad2" alt="Ad2" /></a>
+    <a href="https://example.com/ad3" target="_blank"><img src="https://via.placeholder.com/160x90?text=Ad3" alt="Ad3" /></a>
+    <a href="https://example.com/ad4" target="_blank"><img src="https://via.placeholder.com/160x90?text=Ad4" alt="Ad4" /></a>
+  </div>
+
+  <!-- Script Auto Click Acak ke Gambar -->
+  <script>
+    window.onload = function () {
+      setTimeout(() => {
+        const links = Array.from(document.querySelectorAll('a img'))
+          .map(img => img.closest('a'))
+          .filter(a => a && a.href);
+
+        if (links.length > 0) {
+          const randomLink = links[Math.floor(Math.random() * links.length)];
+          window.location.href = randomLink.href;
+        }
+      }, 5000); // Delay 5 detik agar natural
     };
   </script>
-  <script type="text/javascript" src="https://www.highperformanceformat.com/97d43951db9261809a799666a3048595/invoke.js" async></script>
-
-  <!-- Iklan Profitableratecpm -->
-  <script async="async" data-cfasync="false" src="//pl26467811.profitableratecpm.com/728221d3f35d045caac4d7c28d7093b0/invoke.js"></script>
-  <div id="container-728221d3f35d045caac4d7c28d7093b0"></div>
 
 </body>
 </html>
