@@ -1,24 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitting Candle Script</title>
+  <meta charset="UTF-8">
+  <title>Klik Vast Ad</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
+  <!-- Inject script iklan pertama -->
+  <script>
+    (function(zptrm){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = zptrm || {};
+      s.src = "\/\/beneficial-shape.com\/bKXAV.sMdfG\/la0\/YlW\/cT\/bebmV9Gu\/ZcUHlnknPNTDYT2\/NUTTUG3jOwD\/cStVNojEYt1\/N\/TlcZ4jOAAU";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({})
+  </script>
 
-<script>
-(function(cdgr){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = cdgr || {};
-s.src = "\/\/fitting-candle.com\/c.DS9V6rbD2d5wlbSuWnQd9XNGj\/Y-1hOoD\/EKxMOJCG0f2cNYjJU\/4DM\/TQE\/5l";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
+  <!-- Inject script iklan kedua -->
+  <script>
+    (function(lnul){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.scripts[d.scripts.length - 1];
+      s.settings = lnul || {};
+      s.src = "\/\/fitting-candle.com\/c\/DL9.6-bA2M5lljSfWLQW9UN\/jaYp1iOJDzEAxqOGC_0n2\/NtjLUm4wMrTEER5D";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+    })({})
+  </script>
 
+  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
+  <script>
+    const opened = new Set();
+
+    const observer = new MutationObserver(() => {
+      const links = document.querySelectorAll('a.vast-blocker[href]');
+      links.forEach(link => {
+        if (!opened.has(link.href)) {
+          opened.add(link.href);
+          // tunggu 7 detik sebelum buka di halaman yang sama
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 5000);
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  </script>
 </body>
 </html>
