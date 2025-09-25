@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Auto Click Fondstudy URL (ambil clickUrl kedua)</title>
   <style>
     html, body {
       margin: 0;
@@ -21,39 +21,35 @@
   fetch(scriptURL)
     .then(response => response.text())
     .then(jsCode => {
-      // Cari pattern "clickUrl":"..."
-      const match = jsCode.match(/"clickUrl"\s*:\s*"([^"]+)"/);
-      if (match && match[1]) {
-        const clickUrl = match[1];
-        console.log("clickUrl ditemukan:", clickUrl);
-        // Tunggu 8 detik sebelum klik (di tab yang sama)
+      // Cari semua clickUrl
+      const regex = /"adSample":"([^"]+)".*?"appName":"([^"]+)".*?"clickUrl":"([^"]+)"/g;
+      const matches = [...jsCode.matchAll(regex)];
+
+      if (matches.length > 1) {
+        // Ambil yang kedua (index 1)
+        const adSample = matches[1][1];
+        const appName  = matches[1][2];
+        const clickUrl = matches[1][3];
+
+        console.log("adSample:", adSample);
+        console.log("appName :", appName);
+        console.log("clickUrl (blok 2):", clickUrl);
+
+        // Auto klik setelah 9 detik
         setTimeout(() => {
           const a = document.createElement("a");
-          a.href = clickUrl;            // set tujuan dari clickUrl
-          // jangan set a.target supaya klik terjadi di tab yang sama
-          a.style.display = "none";     // biar gak kelihatan di DOM
+          a.href = clickUrl;
+          a.style.display = "none";
           document.body.appendChild(a);
           a.click();
-          a.remove();                   // hapus link supaya bersih
-        }, 8000);
+          a.remove();
+        }, 9000);
+
       } else {
-        console.warn("clickUrl tidak ditemukan di script");
+        console.warn("ClickUrl blok ke-2 tidak ditemukan");
       }
     })
     .catch(err => console.error("Gagal fetch script:", err));
-</script>
-
-<script>
-(function(orawl){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = orawl || {};
-s.src = "\/\/disfiguredcomment.com\/byXoV.sJdbG_l\/0SYlWmcy\/beRm\/9Xu\/ZuUylUk\/PSTsYH2\/NqTMks1iNcTNcKtVNPjuYd1mO-T_Un1KOfAh";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
 </script>
 
 </body>
